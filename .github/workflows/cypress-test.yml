@@ -1,6 +1,11 @@
 name: Cypress Test
 
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+       cli:
+        description: run by Cypress comand line
+        default: yarn cypress run
 
 jobs:
   cypress-electron-tests:
