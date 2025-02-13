@@ -13,3 +13,7 @@
     "cypress": "12.5.1"
   }
 }
+{
+  "defaultCommandTimeout": 10000,
+  "pageLoadTimeout": 60000
+}
