@@ -1,12 +1,11 @@
-
 name: Cypress Test
 
 on:
   workflow_dispatch:
     inputs:
-       spec:
-        description: run by Cypress comand line
-        default:  cypress/e2e/*
+      spec:
+        description: Run by Cypress command line
+        default: cypress/e2e/*
 
 jobs:
   cypress-e2e-electron:
@@ -15,15 +14,18 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4.2.2
 
-      - name: crypress run
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Cypress Run
         uses: cypress-io/github-action@v6.5.0
         with:
-          install-command: yarn isntall
+          install-command: yarn install
           browser: electron
           record: true
-          group: ui electron
+          group: ui-electron
           spec: ${{ github.event.inputs.spec }}
         env:
           CYPRESS_RECORD_KEY: 316deccc-28d0-4ec0-b50c-d0eb832b9a3f
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
