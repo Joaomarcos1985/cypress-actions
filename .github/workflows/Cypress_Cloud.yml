@@ -78,6 +78,7 @@ jobs:
           record: true
           group: ui-firefox
           spec: ${{ github.event.inputs.spec }}
+          version: 14.0
         env:
           CYPRESS_RECORD_KEY: 316deccc-28d0-4ec0-b50c-d0eb832b9a3f
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
