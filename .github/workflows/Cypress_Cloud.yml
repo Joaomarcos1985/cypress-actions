@@ -10,6 +10,9 @@ on:
 jobs:
   cypress-e2e-electron:
     runs-on: ubuntu-latest
+     container:
+      image: cypress/browsers:node-20.6.1-chrome-118.0.5993.88-1-ff-118.0.2
+      option: --user 1001
     steps:
       - name: Get code
         uses: actions/checkout@v4.2.2
@@ -24,6 +27,57 @@ jobs:
           browser: electron
           record: true
           group: ui-electron
+          spec: ${{ github.event.inputs.spec }}
+        env:
+          CYPRESS_RECORD_KEY: 316deccc-28d0-4ec0-b50c-d0eb832b9a3f
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+  cypress-e2e-chrome:
+    needs: cypress-e2e-electron
+    runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node-20.6.1-chrome-118.0.5993.88-1-ff-118.0.2
+      option: --user 1001
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4.2.2
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Cypress Run
+        uses: cypress-io/github-action@v6.5.0
+        with:
+          install-command: yarn install
+          browser: chrome
+          record: true
+          group: ui-chrome
+          spec: ${{ github.event.inputs.spec }}
+        env:
+          CYPRESS_RECORD_KEY: 316deccc-28d0-4ec0-b50c-d0eb832b9a3f
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+  cypress-e2e-firefox:
+    needs: cypress-e2e-electron
+    runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node-20.6.1-chrome-118.0.5993.88-1-ff-118.0.2
+      option: --user 1001
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4.2.2
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Cypress Run
+        uses: cypress-io/github-action@v6.5.0
+        with:
+          install-command: yarn install
+          browser: firefox
+          record: true
+          group: ui-firefox
           spec: ${{ github.event.inputs.spec }}
         env:
           CYPRESS_RECORD_KEY: 316deccc-28d0-4ec0-b50c-d0eb832b9a3f
