@@ -10,9 +10,9 @@ on:
 jobs:
   cypress-e2e-electron:
     runs-on: ubuntu-latest
-     container:
+    container:
       image: cypress/browsers:node-20.6.1-chrome-118.0.5993.88-1-ff-118.0.2
-      option: --user 1001
+      options: --user 1001
     steps:
       - name: Get code
         uses: actions/checkout@v4.2.2
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: cypress/browsers:node-20.6.1-chrome-118.0.5993.88-1-ff-118.0.2
-      option: --user 1001
+      options: --user 1001
     steps:
       - name: Get code
         uses: actions/checkout@v4.2.2
@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: cypress/browsers:node-20.6.1-chrome-118.0.5993.88-1-ff-118.0.2
-      option: --user 1001
+      options: --user 1001
     steps:
       - name: Get code
         uses: actions/checkout@v4.2.2
