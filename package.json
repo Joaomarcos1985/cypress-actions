@@ -11,9 +11,11 @@
   "license": "MIT",
   "devDependencies": {
     "cypress": "12.5.1"
+  },
+  "cypressConfig": {
+    "defaultCommandTimeout": 10000,
+    "pageLoadTimeout": 60000
   }
 }
-{
-  "defaultCommandTimeout": 10000,
-  "pageLoadTimeout": 60000
-}
+
+
