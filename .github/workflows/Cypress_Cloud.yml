@@ -70,9 +70,7 @@ jobs:
       - name: Install Cypress latest
         run: yarn add cypress@latest --dev
 
-      - name: Install missing dependencies
-        run: |
-          apt-get update && apt-get install -y libgtk-3-0 libdbus-glib-1-2
+     
       - name: Cypress Run
         uses: cypress-io/github-action@v6.5.0
         with:
