@@ -17,8 +17,8 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4.2.2
 
-      - name: Install dependencies
-        run: yarn install 
+      - name: Install Cypress latest
+        run: yarn add cypress@latest --dev
 
       - name: Cypress Run
         uses: cypress-io/github-action@v6.5.0
@@ -43,8 +43,8 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4.2.2
 
-      - name: Install dependencies
-        run: yarn install 
+      - name: Install Cypress latest
+        run: yarn add cypress@latest --dev
       - name: Cypress Run
         uses: cypress-io/github-action@v6.5.0
         with:
@@ -67,9 +67,12 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4.2.2
 
-      - name: Install dependencies
-        run: yarn install 
+      - name: Install Cypress latest
+        run: yarn add cypress@latest --dev
 
+      - name: Install missing dependencies
+        run: |
+          apt-get update && apt-get install -y libgtk-3-0 libdbus-glib-1-2
       - name: Cypress Run
         uses: cypress-io/github-action@v6.5.0
         with:
@@ -78,7 +81,7 @@ jobs:
           record: true
           group: ui-firefox
           spec: ${{ github.event.inputs.spec }}
-          version: 14.0
+          headed: true
         env:
           CYPRESS_RECORD_KEY: 316deccc-28d0-4ec0-b50c-d0eb832b9a3f
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
