@@ -63,13 +63,14 @@ jobs:
     container:
       image: cypress/browsers:node-22.14.0-chrome-133.0.6943.53-1-ff-135.0
 
-      options: --user root 
+      options: --user 1001
     steps:
       - name: Get code
         uses: actions/checkout@v4.2.2
 
       - name: Install Cypress latest
-        run: yarn add cypress@latest --dev
+        run: yarn install
+
 
      
       - name: Cypress Run
