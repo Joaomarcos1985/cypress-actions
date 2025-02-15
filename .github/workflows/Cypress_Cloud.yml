@@ -17,8 +17,8 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4.2.2
 
-      - name: Install Cypress latest
-        run: yarn add cypress@latest --dev
+      - name: Install dependencies
+        run: yarn install 
 
       - name: Cypress Run
         uses: cypress-io/github-action@v6.5.0
@@ -43,8 +43,8 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4.2.2
 
-      - name: Install Cypress latest
-        run: yarn add cypress@latest --dev
+      - name: Install dependencies
+        run: yarn install 
       - name: Cypress Run
         uses: cypress-io/github-action@v6.5.0
         with:
@@ -62,17 +62,14 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: cypress/browsers:node-22.14.0-chrome-133.0.6943.53-1-ff-135.0-edge-133.0.3065.59-1
-
       options: --user 1001
     steps:
       - name: Get code
         uses: actions/checkout@v4.2.2
 
-      - name: Install Cypress latest
-        run: yarn install
+      - name: Install dependencies
+        run: yarn install 
 
-
-     
       - name: Cypress Run
         uses: cypress-io/github-action@v6.5.0
         with:
@@ -81,8 +78,7 @@ jobs:
           record: true
           group: ui-firefox
           spec: ${{ github.event.inputs.spec }}
-          headed: true
+          version: 14.0
         env:
           CYPRESS_RECORD_KEY: 316deccc-28d0-4ec0-b50c-d0eb832b9a3f
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
