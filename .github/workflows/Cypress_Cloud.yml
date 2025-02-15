@@ -61,8 +61,9 @@ jobs:
     needs: cypress-e2e-electron
     runs-on: ubuntu-latest
     container:
-      image: cypress/browsers:node-20.8.1-chrome-117.0.5938.92-1-ff-117.0
-      options: --user root --privileged
+      image: cypress/browsers:node-22.14.0-chrome-133.0.6943.53-1-ff-135.0
+
+      options: --user root 
     steps:
       - name: Get code
         uses: actions/checkout@v4.2.2
